@@ -1,0 +1,1758 @@
+
+/
+Yt
+Yt
+
+
+
+Type / for skills
+How can I help you today?
+
+
+
+
+Recents
+Project status and remaining tasks
+2 minutes ago
+Getting paid for downtime work
+2 days ago
+YouTube content project
+Aug 14
+Instructions
+Add instructions to tailor Claude’s responses
+
+Context
+9% of project capacity used
+Search mode
+
+2026-08-22_WHERE-THINGS-STAND.md
+170 lines
+
+md
+
+
+
+
+2026-08-22_rveirs-interface-spec.md
+233 lines
+
+md
+
+
+
+
+2026-08-22_loose-material.md
+174 lines
+
+md
+
+
+
+
+2026-08-21_wk0-sunday-bullets.md
+121 lines
+
+md
+
+
+
+
+2026-08-21_wk0-bullets-mon-sat.md
+201 lines
+
+md
+
+
+
+
+2026-08-20_session-insights-and-updates.md
+58 lines
+
+md
+
+
+
+
+2026-08-21_rveirs-design-doc-v0.2.md
+675 lines
+
+md
+
+
+
+
+2026-08-21_rveirs-user-guide-v0.2.md
+205 lines
+
+md
+
+
+
+
+2026-08-21_scheduler-notes.md
+135 lines
+
+md
+
+
+
+
+2026-08-21_rveirs-install-guide-v0.2.md
+329 lines
+
+md
+
+
+
+
+2026-08-20_wmwm0-gestalt-outline.md
+15 lines
+
+md
+
+
+
+
+2026-08-21_ES-target-list.md
+167 lines
+
+md
+
+
+
+
+2026-08-21_editor-notes.md
+126 lines
+
+md
+
+
+
+
+2026-08-20_media-recommendations.md
+38 lines
+
+md
+
+
+
+
+eddy-calculator-v3.html
+1,279 lines
+
+html
+
+
+
+
+rveirs-user-manual-draft.md
+101 lines
+
+md
+
+
+
+
+rveirs-build-guide.md
+359 lines
+
+md
+
+
+
+
+rveirs-user-manual.md
+119 lines
+
+md
+
+
+
+
+outlandish-apparatus-pitchdeck.md
+132 lines
+
+md
+
+
+
+
+outlandish-apparatus-onepager.md
+31 lines
+
+md
+
+
+
+
+BOOTSTRAP_V3.md
+143 lines
+
+md
+
+
+
+
+oakvale_2025_05.json
+228 lines
+
+json
+
+
+
+
+oakvale_2025_03.json
+182 lines
+
+json
+
+
+
+
+oakvale_2025_02.json
+152 lines
+
+json
+
+
+
+
+rveirs-junk-drawer.md
+73 lines
+
+md
+
+
+
+
+rveirs-user-manual.md
+119 lines
+
+md
+
+
+
+
+cedar_hollow_2025_01.json
+458 lines
+
+json
+
+
+
+
+README_network-test.md
+78 lines
+
+md
+
+
+
+
+rveirs_concept.md
+101 lines
+
+md
+
+
+
+
+book-draft.md
+3,445 lines
+
+md
+
+
+
+
+cedar_hollow_2025_02.json
+887 lines
+
+json
+
+
+
+
+rveirs_project_notes.md
+620 lines
+
+md
+
+
+
+
+rveirs-build-guide.md
+359 lines
+
+md
+
+
+
+
+rveirs-user-manual-draft.md
+101 lines
+
+md
+
+
+
+
+context_read_first (1).md
+86 lines
+
+md
+
+
+
+
+rveirs-youtube-content-notes.md
+118 lines
+
+md
+
+
+
+
+yt_content_queue.md
+64 lines
+
+md
+
+
+
+
+session-notes-yt-and-fieldwork.md
+131 lines
+
+md
+
+
+
+
+rveirs-shorts-production-notes.md
+55 lines
+
+md
+
+
+
+
+patronage-outreach-map.md
+69 lines
+
+md
+
+
+
+
+rveirs-junk-drawer.md
+73 lines
+
+md
+
+
+
+
+founder-interview-cheat-sheet.md
+66 lines
+
+md
+
+
+
+
+video2-3-outlines.md
+66 lines
+
+md
+
+
+
+
+video4-script-draft.md
+68 lines
+
+md
+
+
+
+
+rveirs_project_notes.md
+620 lines
+
+md
+
+
+
+
+contact_strategy.md
+455 lines
+
+md
+
+
+
+
+2026-08-18_thok-timeline-art-spec.md
+49 lines
+
+md
+
+
+
+
+2026-08-18_mesh-architecture-and-protocol-notes.md
+66 lines
+
+md
+
+
+
+
+2026-08-18_audience-funding-strategy.md
+39 lines
+
+md
+
+
+
+
+2026-08-18_HANDOFF-NOTE.md
+32 lines
+
+md
+
+
+
+
+2026-08-18_rveirs-scoring-math-layer-model.md
+236 lines
+
+md
+
+
+
+
+2026-08-18_content-season-1-schedule.md
+173 lines
+
+md
+
+
+
+
+session-notes-yt-and-fieldwork.md
+131 lines
+
+md
+
+
+
+
+rveirs-shorts-production-notes.md
+55 lines
+
+md
+
+
+
+
+rveirs-youtube-content-notes.md
+118 lines
+
+md
+
+
+
+Scheduled
+Set up recurring tasks for this project.
+
+Context
+1 item
+
+calc
+1 file matching “calc”
+
+eddy-calculator-v3.html
+eddy-calculator-v3.html
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RVEIRS — Eddy Calculator</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+ 
+  :root {
+    --bg:        #0f0f0f;
+    --surface:   #181818;
+    --border:    #2a2a2a;
+    --border2:   #333;
+    --text:      #e8e8e0;
+    --muted:     #777;
+    --amber:     #f0a500;
+    --amber-dim: #7a5200;
+    --green:     #4caf6e;
+    --red:       #d05050;
+    --blue:      #5a9fd4;
+    --purple:    #9b7fd4;
+    --mono:      'IBM Plex Mono', monospace;
+    --sans:      'IBM Plex Sans', sans-serif;
+  }
+ 
+  body.light {
+    --bg:        #f5f4f0;
+    --surface:   #ffffff;
+    --border:    #d8d5cc;
+    --border2:   #c8c4bb;
+    --text:      #1a1a18;
+    --muted:     #888880;
+    --amber:     #b87000;
+    --amber-dim: #d09040;
+    --green:     #2a7a48;
+    --red:       #b03030;
+    --blue:      #2a6a9a;
+    --purple:    #6a4ab0;
+  }
+  body.light .zone-local { background: #e0f2e8; color: var(--green); border-color: #b0dfc0; }
+  body.light .zone-close { background: #e0ecf8; color: var(--blue);  border-color: #a0c8e8; }
+  body.light .zone-far   { background: #fce8e8; color: var(--red);   border-color: #e8b0b0; }
+  body.light .zone-void  { background: #f5f0d8; color: #907820;      border-color: #d8cc88; }
+  body.light .zone-blank { background: transparent; border-color: var(--border2); color: var(--muted); }
+  body.light .vbar-local { background: #b0dfbf; color: var(--green); }
+  body.light .vbar-close { background: #a0c8e8; color: var(--blue); }
+  body.light .vbar-far   { background: #e8b0b0; color: var(--red); }
+  body.light .vbar-void  { background: #d8cc88; color: #706010; }
+  body.light input[type="text"], body.light input[type="number"] { background: #fafaf7; }
+  body.light .tab-btn.active { background: #f0ede6; border-bottom-color: #f0ede6; }
+  body.light .tab-btn { background: #e8e5de; }
+  body.light .export-box { background: #f0ede6; }
+  body.light .node-zone-tag.zone-local { background: #e0f2e8; color: var(--green); border-color: #b0dfc0; }
+  body.light .node-zone-tag.zone-close { background: #e0ecf8; color: var(--blue); border-color: #a0c8e8; }
+  body.light .node-zone-tag.zone-far   { background: #fce8e8; color: var(--red); border-color: #e8b0b0; }
+  body.light .node-zone-tag.zone-void  { background: #f5f0d8; color: #907820; border-color: #d8cc88; }
+ 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 14px;
+    min-height: 100vh;
+    padding: 16px;
+  }
+ 
+  .shell {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+ 
+  /* ── Header ── */
+  .header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--amber);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .header span {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .presets {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .preset-btn {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 4px 8px;
+    background: transparent;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: all 0.15s;
+  }
+  .preset-btn:hover { border-color: var(--amber); color: var(--amber); }
+ 
+  /* ── Scores panel ── */
+  .scores-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+  }
+  .scores-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .card-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .scores-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+ 
+  /* math toggle */
+  .math-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .math-toggle-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+  .toggle-track {
+    width: 32px; height: 16px;
+    background: var(--border2);
+    border-radius: 8px;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .toggle-track.on { background: var(--amber-dim); }
+  .toggle-thumb {
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 12px; height: 12px;
+    background: var(--muted);
+    border-radius: 50%;
+    transition: left 0.2s, background 0.2s;
+  }
+  .toggle-track.on .toggle-thumb { left: 18px; background: var(--amber); }
+ 
+  /* score blocks */
+  .score-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-right: 16px;
+    border-right: 1px solid var(--border);
+  }
+  .score-block:last-child { border-right: none; padding-right: 0; }
+  .score-name {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .score-value {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--amber);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .score-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .score-bar-track {
+    height: 4px;
+    background: var(--border);
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    background: var(--amber);
+    transition: width 0.3s ease;
+  }
+ 
+  /* eddy_1 node location */
+  .node-zone-tag {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 600;
+    padding: 4px 10px;
+    letter-spacing: 0.08em;
+    display: inline-block;
+    margin: 2px 0;
+  }
+  .node-zone-tag.zone-local { background: #1a3a24; color: var(--green); border: 1px solid #2a5a34; }
+  .node-zone-tag.zone-close { background: #1a2a3a; color: var(--blue);  border: 1px solid #2a4a5a; }
+  .node-zone-tag.zone-far   { background: #3a1a1a; color: var(--red);   border: 1px solid #5a2a2a; }
+  .node-zone-tag.zone-void  { background: #2a2a1a; color: #a09040;      border: 1px solid #4a4a2a; }
+ 
+  /* math mode arrays */
+  .math-array {
+    display: none;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 4px;
+    padding-top: 6px;
+    border-top: 1px solid var(--border);
+  }
+  .math-array.visible { display: flex; }
+  .math-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+  .math-row .mkey { color: var(--muted); }
+  .math-row .mval { font-weight: 600; }
+  .mval.local { color: var(--green); }
+  .mval.close { color: var(--blue); }
+  .mval.far   { color: var(--red); }
+  .mval.void  { color: #a09040; }
+  .mval.depth { color: var(--amber); }
+  .mval.dim   { color: var(--muted); font-style: italic; }
+ 
+  /* ── Zone vector ── */
+  .vector-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 10px 16px 12px;
+  }
+  .vector-bar {
+    display: flex;
+    height: 16px;
+    overflow: hidden;
+    gap: 1px;
+    margin-bottom: 8px;
+  }
+  .vbar-seg {
+    transition: width 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .vbar-local { background: #2a5a34; color: var(--green); }
+  .vbar-close { background: #2a4a5a; color: var(--blue); }
+  .vbar-far   { background: #5a2a2a; color: var(--red); }
+  .vbar-void  { background: #3a3a20; color: #a09040; }
+  .vector-legend {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+  .legend-item { display: flex; flex-direction: column; }
+  .legend-zone {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .legend-pct {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .legend-amt { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+  .legend-local .legend-pct { color: var(--green); }
+  .legend-close .legend-pct { color: var(--blue); }
+  .legend-far   .legend-pct { color: var(--red); }
+  .legend-void  .legend-pct { color: #a09040; }
+  .total-line {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .total-line span:last-child { color: var(--text); }
+ 
+  /* ── Export panel ── */
+  .export-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+  }
+  .export-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .export-btn {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 4px 10px;
+    background: transparent;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    transition: all 0.15s;
+  }
+  .export-btn:hover { border-color: var(--amber); color: var(--amber); }
+  .export-box {
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    padding: 10px 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text);
+    line-height: 1.7;
+    white-space: pre;
+    overflow-x: auto;
+    display: none;
+    margin-top: 10px;
+  }
+  .export-box.visible { display: block; }
+  .export-note {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 6px;
+    font-style: italic;
+    display: none;
+  }
+  .export-note.visible { display: block; }
+ 
+  /* ── Tabs ── */
+  .tab-bar {
+    display: flex;
+    gap: 2px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tab-btn {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-bottom: none;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-bottom: -1px;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active {
+    background: var(--surface);
+    border-color: var(--border);
+    border-bottom-color: var(--surface);
+    color: var(--amber);
+  }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+ 
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 14px;
+  }
+ 
+  /* ── Inputs ── */
+  input[type="text"], input[type="number"] {
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 6px 8px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  input:focus { border-color: var(--amber); }
+  input::placeholder { color: var(--muted); font-size: 12px; }
+ 
+  .field { margin-bottom: 8px; }
+  .field label {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 3px;
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+  }
+ 
+  /* spending rows */
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 90px 80px 48px 24px;
+    gap: 4px;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  .field-row input[type="number"] { text-align: right; }
+ 
+  /* inflow row — no zip, no zone tag */
+  .inflow-row {
+    display: grid;
+    grid-template-columns: 1fr 90px 24px;
+    gap: 4px;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  .inflow-row input[type="number"] { text-align: right; }
+ 
+  .zone-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 3px 4px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .zone-local  { background: #1a3a24; color: var(--green); border: 1px solid #2a5a34; }
+  .zone-close  { background: #1a2a3a; color: var(--blue);  border: 1px solid #2a4a5a; }
+  .zone-far    { background: #3a1a1a; color: var(--red);   border: 1px solid #5a2a2a; }
+  .zone-void   { background: #2a2a1a; color: #a09040;      border: 1px solid #4a4a2a; }
+  .zone-blank  { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+ 
+  .row-headers {
+    display: grid;
+    grid-template-columns: 1fr 90px 80px 48px 24px;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .row-headers span {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .row-headers span:nth-child(2) { text-align: right; }
+  .row-headers span:nth-child(3) { text-align: center; }
+ 
+  .inflow-headers {
+    display: grid;
+    grid-template-columns: 1fr 90px 24px;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .inflow-headers span {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .inflow-headers span:nth-child(2) { text-align: right; }
+ 
+  .del-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    padding: 2px 4px;
+    transition: all 0.15s;
+    font-family: var(--mono);
+  }
+  .del-btn:hover { border-color: var(--red); color: var(--red); }
+  .add-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    background: transparent;
+    border: 1px dashed var(--border2);
+    color: var(--muted);
+    padding: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 4px;
+    transition: all 0.15s;
+  }
+  .add-btn:hover { border-color: var(--amber); color: var(--amber); }
+ 
+  .flow-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 12px;
+  }
+  .flow-label .flow-dir { color: var(--amber); font-weight: 600; }
+ 
+  /* settings zip grid */
+  .zip-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .zip-col-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .zone-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+  .dot-local { background: var(--green); }
+  .dot-close { background: var(--blue); }
+  .zip-list {
+    min-height: 100px;
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .zip-entry { display: flex; align-items: center; gap: 6px; }
+  .zip-entry input[type="text"] { flex: 1; font-size: 12px; padding: 3px 6px; }
+  .zip-chip {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 2px 8px;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    background: var(--surface);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .zip-chip:hover { border-color: var(--red); color: var(--red); }
+  .zip-add-btn {
+    font-family: var(--mono);
+    font-size: 10px;
+    background: transparent;
+    border: 1px dashed var(--border2);
+    color: var(--muted);
+    padding: 4px 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 4px;
+    transition: all 0.15s;
+    letter-spacing: 0.05em;
+  }
+  .zip-add-btn:hover { border-color: var(--amber); color: var(--amber); }
+  .far-void-note {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    padding: 8px 0 4px;
+    letter-spacing: 0.04em;
+  }
+  .far-void-note strong { color: var(--text); }
+ 
+  .empty-state {
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 10px;
+    text-align: center;
+    padding: 12px 0;
+    letter-spacing: 0.05em;
+  }
+ 
+  /* ── Footer ── */
+  .footer {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    letter-spacing: 0.05em;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer span { color: var(--amber-dim); }
+ 
+  @media (max-width: 640px) {
+    .scores-grid { grid-template-columns: 1fr; }
+    .score-block { border-right: none; border-bottom: 1px solid var(--border); padding-right: 0; padding-bottom: 12px; }
+    .score-block:last-child { border-bottom: none; padding-bottom: 0; }
+    .zip-grid { grid-template-columns: 1fr; }
+    .field-row { grid-template-columns: 1fr 70px 70px 40px 20px; }
+    .row-headers { grid-template-columns: 1fr 70px 70px 40px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+ 
+  <!-- Header -->
+  <div class="header">
+    <h1>RVEIRS</h1>
+    <span>eddy calculator</span>
+    <div class="presets">
+      <button class="preset-btn" onclick="loadPreset('main')">▶ Main St. Diner</button>
+      <button class="preset-btn" onclick="loadPreset('mamas')">▶ Mama's Diner</button>
+      <button class="preset-btn" onclick="loadPreset('riorojo')">▶ Rio Rojo</button>
+      <button class="preset-btn" onclick="clearAll()">✕ clear</button>
+      <button class="preset-btn" id="theme-btn" onclick="toggleTheme()" style="margin-left:8px">☀ light</button>
+    </div>
+  </div>
+ 
+  <!-- Scores -->
+  <div class="scores-panel">
+    <div class="scores-top-row">
+      <span class="card-label">Scores</span>
+      <label class="math-toggle" onclick="toggleMathMode()">
+        <span class="math-toggle-label">math mode</span>
+        <div class="toggle-track" id="math-track"><div class="toggle-thumb"></div></div>
+      </label>
+    </div>
+ 
+    <div class="scores-grid">
+ 
+      <!-- eddy_1: node location -->
+      <div class="score-block">
+        <div class="score-name">eddy_1 &nbsp;·&nbsp; entity location</div>
+        <div id="e1-tag" class="node-zone-tag zone-void">—</div>
+        <div class="score-label" id="e1-label">set home zip + zone config</div>
+        <div class="math-array" id="e1-array">
+          <div class="math-row"><span class="mkey">local</span><span class="mval local" id="e1-local">—</span></div>
+          <div class="math-row"><span class="mkey">close</span><span class="mval close" id="e1-close">—</span></div>
+          <div class="math-row"><span class="mkey">far  </span><span class="mval far"   id="e1-far">—</span></div>
+          <div class="math-row"><span class="mkey">void </span><span class="mval void"  id="e1-void">—</span></div>
+          <div class="math-row" style="margin-top:2px;padding-top:4px;border-top:1px solid var(--border)">
+            <span class="mkey">depth[0]</span><span class="mval depth">1.000</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Share score -->
+      <div class="score-block">
+        <div class="score-name">depth_2 &nbsp;·&nbsp; outflow coverage</div>
+        <div class="score-value" id="ss-val">—</div>
+        <div class="score-bar-track"><div class="score-bar-fill" id="ss-bar" style="width:0%"></div></div>
+        <div class="score-label" id="ss-label">fraction of outflows with known destination</div>
+        <div class="math-array" id="ss-array">
+          <div class="math-row"><span class="mkey">depth[0]</span><span class="mval depth">1.000</span></div>
+          <div class="math-row"><span class="mkey">depth[1]</span><span class="mval depth" id="depth1-val">—</span></div>
+          <div class="math-row"><span class="mkey">depth[2]</span><span class="mval dim">network required</span></div>
+        </div>
+      </div>
+ 
+      <!-- eddy_2: local circulation -->
+      <div class="score-block">
+        <div class="score-name">eddy_2 &nbsp;·&nbsp; local circulation</div>
+        <div class="score-value" id="e2-val">—</div>
+        <div class="score-bar-track"><div class="score-bar-fill" id="e2-bar" style="width:0%"></div></div>
+        <div class="score-label" id="e2-label">local + (close × 0.5)</div>
+        <div class="math-array" id="e2-array">
+          <div class="math-row"><span class="mkey">local</span><span class="mval local" id="e2-local">—</span></div>
+          <div class="math-row"><span class="mkey">close</span><span class="mval close" id="e2-close">—</span></div>
+          <div class="math-row"><span class="mkey">far  </span><span class="mval far"   id="e2-far">—</span></div>
+          <div class="math-row"><span class="mkey">void </span><span class="mval void"  id="e2-void">—</span></div>
+          <div class="math-row" style="margin-top:2px;padding-top:4px;border-top:1px solid var(--border)">
+            <span class="mkey">depth[1]</span><span class="mval depth" id="e2-depth">—</span>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+ 
+  <!-- Zone vector bar -->
+  <div class="vector-panel">
+    <div class="vector-bar">
+      <div class="vbar-seg vbar-local" id="vb-local" style="width:0%"></div>
+      <div class="vbar-seg vbar-close" id="vb-close" style="width:0%"></div>
+      <div class="vbar-seg vbar-far"   id="vb-far"   style="width:0%"></div>
+      <div class="vbar-seg vbar-void"  id="vb-void"  style="width:100%">no data</div>
+    </div>
+    <div class="vector-legend">
+      <div class="legend-item legend-local">
+        <span class="legend-zone">local</span>
+        <span class="legend-pct" id="l-local-pct">—</span>
+        <span class="legend-amt" id="l-local-amt"></span>
+      </div>
+      <div class="legend-item legend-close">
+        <span class="legend-zone">close</span>
+        <span class="legend-pct" id="l-close-pct">—</span>
+        <span class="legend-amt" id="l-close-amt"></span>
+      </div>
+      <div class="legend-item legend-far">
+        <span class="legend-zone">far</span>
+        <span class="legend-pct" id="l-far-pct">—</span>
+        <span class="legend-amt" id="l-far-amt"></span>
+      </div>
+      <div class="legend-item legend-void">
+        <span class="legend-zone">void</span>
+        <span class="legend-pct" id="l-void-pct">—</span>
+        <span class="legend-amt" id="l-void-amt"></span>
+      </div>
+    </div>
+    <div class="total-line">
+      <span>total throughput (inflows)</span>
+      <span id="l-total">—</span>
+    </div>
+  </div>
+ 
+  <!-- Export / network payload -->
+  <div class="export-panel">
+    <div class="export-header">
+      <span class="card-label">Network Payload</span>
+      <button class="export-btn" id="export-toggle-btn" onclick="toggleExport()">▶ show payload</button>
+    </div>
+    <div class="export-box" id="export-box"></div>
+    <div class="export-note" id="export-note">This is what your node would share with the network — ratios and zip codes only. No dollar amounts leave your device.</div>
+  </div>
+ 
+  <!-- Tabs -->
+  <div>
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('outflows')">Outflows</button>
+      <button class="tab-btn"        onclick="switchTab('inflows')">Inflows</button>
+      <button class="tab-btn"        onclick="switchTab('settings')">Zone Settings</button>
+    </div>
+ 
+    <!-- Outflows -->
+    <div class="tab-pane active card" id="tab-outflows">
+      <div class="flow-label">
+        <span class="flow-dir">→ OUT</span>
+        <span>where your money goes — suppliers, rent, utilities, wages</span>
+      </div>
+      <div class="row-headers">
+        <span>Counterparty</span><span>Amount $</span><span>Dest. zip</span><span>Zone</span><span></span>
+      </div>
+      <div id="out-rows-container"></div>
+      <button class="add-btn" onclick="addOutRow()">+ add row</button>
+    </div>
+ 
+    <!-- Inflows -->
+    <div class="tab-pane card" id="tab-inflows">
+      <div class="flow-label">
+        <span class="flow-dir">← IN</span>
+        <span>where your money comes from — total monthly throughput</span>
+      </div>
+      <div class="inflow-headers">
+        <span>Source</span><span>Amount $</span><span></span>
+      </div>
+      <div id="in-rows-container"></div>
+      <button class="add-btn" onclick="addInRow()">+ add row</button>
+    </div>
+ 
+    <!-- Settings -->
+    <div class="tab-pane card" id="tab-settings">
+      <div class="field" style="margin-bottom:14px">
+        <label>Business name (optional)</label>
+        <input type="text" id="biz-name" placeholder="e.g. Mama's Diner" oninput="recalc()">
+      </div>
+      <div class="field" style="margin-bottom:14px">
+        <label>Home zip</label>
+        <input type="text" id="home-zip" placeholder="72901" oninput="updateZoneDefaults(); recalc()" style="max-width:160px">
+      </div>
+      <div class="zip-grid">
+        <div>
+          <div class="zip-col-label"><span class="zone-dot dot-local"></span>Local zips</div>
+          <div class="zip-list" id="local-list"></div>
+          <button class="zip-add-btn" onclick="addZip('local')">+ add local zip</button>
+        </div>
+        <div>
+          <div class="zip-col-label"><span class="zone-dot dot-close"></span>Close zips</div>
+          <div class="zip-list" id="close-list"></div>
+          <button class="zip-add-btn" onclick="addZip('close')">+ add close zip</button>
+        </div>
+      </div>
+      <div class="far-void-note">
+        <strong>Far</strong> = any other known zip &nbsp;·&nbsp; <strong>Void</strong> = blank or 99999
+      </div>
+      <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border)">
+        <div class="card-label" style="margin-bottom:8px">Zone presets</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button class="preset-btn" onclick="applyZonePreset('fortsmith')">Fort Smith / River Valley</button>
+          <button class="preset-btn" onclick="applyZonePreset('eureka')">Carroll County / Eureka Springs</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Footer -->
+  <div class="footer">
+    <div><span>eddy_1</span> = entity location zone vector &nbsp;·&nbsp; depth_1 always 1.000</div>
+    <div><span>depth_2</span> = known outflows ÷ throughput &nbsp;·&nbsp; 1 − void fraction</div>
+    <div><span>eddy_2</span> = local_ratio + (close_ratio × 0.5) &nbsp;·&nbsp; as fraction of throughput</div>
+    <div><span>eddy_3+</span> = recursive network score &nbsp;·&nbsp; requires network data</div>
+  </div>
+ 
+</div>
+<script>
+// ── State ──────────────────────────────────────────────────────────────────
+let outRowCount = 0;
+let inRowCount  = 0;
+let mathMode    = false;
+let exportOpen  = false;
+let localZipList = [];
+let closeZipList = [];
+ 
+// ── Presets ────────────────────────────────────────────────────────────────
+const PRESETS = {
+  main: {
+    name: 'Main Street Diner', homeZip: '72901',
+    localZips: ['72901'], closeZips: ['72903','72904','72956'],
+    inRows: [{ name:'Monthly revenue', amount:12000 }],
+    outRows: [
+      { name:'Employee wages',         amount:4000, zip:'72901' },
+      { name:'Commercial rent',        amount:1500, zip:'72901' },
+      { name:'Local produce supplier', amount:800,  zip:'72903' },
+      { name:'Sysco (national)',        amount:1200, zip:'30328' },
+      { name:'Entergy Arkansas',        amount:400,  zip:'72201' },
+      { name:'Unknown misc',            amount:300,  zip:''      },
+    ]
+  },
+  mamas: {
+    name:"Mama's Diner", homeZip:'72901',
+    localZips:['72901','72903','72904','72921','72936','72941','72956'],
+    closeZips:['72201'],
+    inRows:[ { name:'Monthly revenue', amount:28000 } ],
+    outRows:[
+      { name:"Linda's salary",           amount:3500, zip:'72901' },
+      { name:'Cook (full time)',          amount:2200, zip:'72904' },
+      { name:'Waitstaff x2',             amount:2800, zip:'72901' },
+      { name:'Dishwasher (part time)',    amount:900,  zip:'72901' },
+      { name:'Rent — Willow Creek LLC',   amount:3200, zip:'75201' },
+      { name:'Sysco Food Services',       amount:7400, zip:'77077' },
+      { name:'Payroll taxes (IRS)',        amount:1100, zip:'20224' },
+      { name:'Arkansas sales tax',        amount:800,  zip:'72201' },
+      { name:'Entergy Arkansas',          amount:620,  zip:'72201' },
+      { name:'Chase bank fees',           amount:180,  zip:'10017' },
+      { name:'Uniforms/supplies (Amazon)',amount:340,  zip:'98109' },
+      { name:'Unknown/misc',              amount:960,  zip:''      },
+    ]
+  },
+  riorojo: {
+    name:'Rio Rojo Fort Smith', homeZip:'72901',
+    localZips:['72901','72903','72904','72921','72936','72941','72956'],
+    closeZips:['72201','72712'],
+    inRows:[ { name:'Monthly revenue', amount:32000 } ],
+    outRows:[
+      { name:'Carlos salary',            amount:4200, zip:'72903' },
+      { name:'Line cook x2',             amount:4400, zip:'72901' },
+      { name:'Front of house x3',        amount:3900, zip:'72904' },
+      { name:'Busser/prep (part time)',   amount:1100, zip:'72901' },
+      { name:'Rent — Garrison Ave Props', amount:2800, zip:'72901' },
+      { name:'Rivera Family Farm',        amount:2200, zip:'72936' },
+      { name:'Alma Rice Co-op',           amount:800,  zip:'72921' },
+      { name:'Tortilleria Lupita',        amount:1100, zip:'72956' },
+      { name:'Arvest Bank',               amount:140,  zip:'72901' },
+      { name:'Entergy Arkansas',          amount:580,  zip:'72201' },
+      { name:'Arkansas sales tax',        amount:900,  zip:'72201' },
+      { name:'Cielito Lindo mgmt fee',    amount:2400, zip:'75201' },
+      { name:'Restaurant Depot',          amount:1800, zip:'72712' },
+      { name:'Payroll taxes (IRS)',        amount:1300, zip:'20224' },
+      { name:'Unknown/misc',              amount:380,  zip:''      },
+    ]
+  }
+};
+ 
+const ZONE_PRESETS = {
+  fortsmith: {
+    local:['72901','72902','72903','72904','72905','72906','72908','72916','72921','72936','72941','72956'],
+    close:['72201','72202','72203','72204','72205','72206','72207','72209','72210','72211','72212','72214','72215','72217','72219','72221']
+  },
+  eureka: {
+    local:['72632','72661','72616','72631','72611'],
+    close:['72653','72756','72745','72752','72717']
+  }
+};
+ 
+function loadPreset(key) {
+  const p = PRESETS[key];
+  document.getElementById('biz-name').value = p.name;
+  document.getElementById('home-zip').value = p.homeZip;
+  localZipList = [...p.localZips];
+  closeZipList = [...p.closeZips];
+  renderZipLists();
+ 
+  document.getElementById('out-rows-container').innerHTML = '';
+  document.getElementById('in-rows-container').innerHTML  = '';
+  outRowCount = 0; inRowCount = 0;
+ 
+  p.outRows.forEach(r => addOutRow(r.name, r.amount, r.zip));
+  p.inRows.forEach(r  => addInRow(r.name, r.amount));
+  recalc();
+}
+ 
+function clearAll() {
+  document.getElementById('biz-name').value = '';
+  document.getElementById('home-zip').value = '';
+  localZipList = []; closeZipList = [];
+  renderZipLists();
+  document.getElementById('out-rows-container').innerHTML = '';
+  document.getElementById('in-rows-container').innerHTML  = '';
+  outRowCount = 0; inRowCount = 0;
+  addOutRow(); addOutRow(); addOutRow();
+  addInRow();
+  recalc();
+}
+ 
+function applyZonePreset(key) {
+  const p = ZONE_PRESETS[key];
+  localZipList = [...p.local];
+  closeZipList = [...p.close];
+  renderZipLists();
+  recalc();
+}
+ 
+// ── Zip list management ────────────────────────────────────────────────────
+function addZip(type) {
+  if (type === 'local') localZipList.push('');
+  else                  closeZipList.push('');
+  renderZipLists();
+  const list = document.getElementById(type+'-list');
+  const inputs = list.querySelectorAll('input');
+  if (inputs.length) inputs[inputs.length-1].focus();
+}
+function removeZip(type, idx) {
+  if (type === 'local') localZipList.splice(idx,1);
+  else                  closeZipList.splice(idx,1);
+  renderZipLists(); recalc();
+}
+function updateZip(type, idx, val) {
+  if (type === 'local') localZipList[idx] = val.trim();
+  else                  closeZipList[idx] = val.trim();
+  recalc();
+}
+function renderZipLists() {
+  ['local','close'].forEach(type => {
+    const arr = type === 'local' ? localZipList : closeZipList;
+    const el  = document.getElementById(type+'-list');
+    el.innerHTML = '';
+    if (!arr.length) {
+      el.innerHTML = '<div class="empty-state">no zips set</div>';
+      return;
+    }
+    arr.forEach((zip,idx) => {
+      const div = document.createElement('div');
+      div.className = 'zip-entry';
+      div.innerHTML = `<input type="text" value="${escHtml(zip)}" placeholder="e.g. 72901"
+        oninput="updateZip('${type}',${idx},this.value)" style="font-size:12px;padding:3px 6px">
+        <button class="zip-chip" onclick="removeZip('${type}',${idx})">×</button>`;
+      el.appendChild(div);
+    });
+  });
+}
+function getLocalZips() { return new Set(localZipList.filter(Boolean)); }
+function getCloseZips() { return new Set(closeZipList.filter(Boolean)); }
+function updateZoneDefaults() {
+  const hz = document.getElementById('home-zip').value.trim();
+  if (hz && !localZipList.length) { localZipList = [hz]; renderZipLists(); }
+}
+ 
+// ── Tab switching ──────────────────────────────────────────────────────────
+function switchTab(name) {
+  const names = ['outflows','inflows','settings'];
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', names[i]===name));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+}
+ 
+// ── Math mode ──────────────────────────────────────────────────────────────
+function toggleMathMode() {
+  mathMode = !mathMode;
+  document.getElementById('math-track').classList.toggle('on', mathMode);
+  document.querySelectorAll('.math-array').forEach(el => el.classList.toggle('visible', mathMode));
+}
+ 
+// ── Export ─────────────────────────────────────────────────────────────────
+function toggleExport() {
+  exportOpen = !exportOpen;
+  document.getElementById('export-box').classList.toggle('visible', exportOpen);
+  document.getElementById('export-note').classList.toggle('visible', exportOpen);
+  document.getElementById('export-toggle-btn').textContent = exportOpen ? '▼ hide payload' : '▶ show payload';
+  if (exportOpen) buildExport();
+}
+function buildExport() {
+  const localZips = getLocalZips();
+  const closeZips = getCloseZips();
+  let totals = {local:0,close:0,far:0,void:0}, total = 0;
+  document.querySelectorAll('[id^="out-r"][id$="-amount"]').forEach(el => {
+    const m = el.id.match(/^out-r(\d+)-amount$/); if (!m) return;
+    const amt = parseFloat(el.value)||0;
+    const zipEl = document.getElementById(`out-r${m[1]}-zip`);
+    const zone  = classifyZip(zipEl?zipEl.value:'', localZips, closeZips);
+    if (amt>0) { totals[zone]+=amt; total+=amt; }
+  });
+  const ratios = total>0 ? {
+    local:+(totals.local/total).toFixed(4),
+    close:+(totals.close/total).toFixed(4),
+    far:  +(totals.far  /total).toFixed(4),
+    void: +(totals.void /total).toFixed(4),
+  } : {local:0,close:0,far:0,void:1};
+  const shareScore = +(ratios.local+ratios.close+ratios.far).toFixed(4);
+  const e2 = +(ratios.local+ratios.close*0.5).toFixed(4);
+  const homeZip  = document.getElementById('home-zip').value.trim();
+  const nodeZone = classifyZip(homeZip, localZips, closeZips);
+  const payload  = {
+    node: {
+      name: document.getElementById('biz-name').value||'unnamed',
+      home_zip: homeZip,
+      zone: nodeZone
+    },
+    eddy_1: { [nodeZone]: 1, depth: 1.000 },
+    share_score: shareScore,
+    eddy_2: { zone_vector: ratios, score: e2 },
+    depth: { 0: 1.000, 1: shareScore, '2+': 'network required' },
+    zone_config: { local:[...localZips], close:[...closeZips] },
+    generated: new Date().toISOString().slice(0,10)
+  };
+  document.getElementById('export-box').textContent = JSON.stringify(payload, null, 2);
+}
+ 
+// ── Row management ─────────────────────────────────────────────────────────
+function addOutRow(name='', amount='', zip='') {
+  ++outRowCount;
+  const id  = outRowCount;
+  const div = document.createElement('div');
+  div.className = 'field-row';
+  div.id = `out-row-${id}`;
+  div.innerHTML = `
+    <input type="text"   id="out-r${id}-name"   placeholder="counterparty" value="${escHtml(name)}"   oninput="recalc()">
+    <input type="number" id="out-r${id}-amount" placeholder="0.00"          value="${amount||''}"    oninput="recalc()" min="0" step="0.01">
+    <input type="text"   id="out-r${id}-zip"    placeholder="zip"           value="${escHtml(zip)}"   oninput="recalc();updateOutTag(${id})">
+    <div   id="out-r${id}-tag" class="zone-tag zone-blank">—</div>
+    <button class="del-btn" onclick="removeOutRow(${id})">×</button>`;
+  document.getElementById('out-rows-container').appendChild(div);
+  updateOutTag(id);
+}
+function removeOutRow(id) {
+  const el = document.getElementById(`out-row-${id}`); if (el) el.remove(); recalc();
+}
+function updateOutTag(id) {
+  const zipEl = document.getElementById(`out-r${id}-zip`);
+  const tagEl = document.getElementById(`out-r${id}-tag`);
+  if (!zipEl||!tagEl) return;
+  const zone = classifyZip(zipEl.value, getLocalZips(), getCloseZips());
+  tagEl.className = `zone-tag zone-${zone}`;
+  tagEl.textContent = {local:'LOCAL',close:'CLOSE',far:'FAR',void:'VOID'}[zone];
+}
+ 
+function addInRow(name='', amount='') {
+  ++inRowCount;
+  const id  = inRowCount;
+  const div = document.createElement('div');
+  div.className = 'inflow-row';
+  div.id = `in-row-${id}`;
+  div.innerHTML = `
+    <input type="text"   id="in-r${id}-name"   placeholder="source" value="${escHtml(name)}"   oninput="recalc()">
+    <input type="number" id="in-r${id}-amount" placeholder="0.00"   value="${amount||''}"    oninput="recalc()" min="0" step="0.01">
+    <button class="del-btn" onclick="removeInRow(${id})">×</button>`;
+  document.getElementById('in-rows-container').appendChild(div);
+}
+function removeInRow(id) {
+  const el = document.getElementById(`in-row-${id}`); if (el) el.remove(); recalc();
+}
+ 
+// ── Zone logic ─────────────────────────────────────────────────────────────
+function classifyZip(zip, localZips, closeZips) {
+  const z = (zip||'').trim();
+  if (!z || z==='99999') return 'void';
+  if (localZips.has(z))  return 'local';
+  if (closeZips.has(z))  return 'close';
+  return 'far';
+}
+ 
+// ── Calculation ────────────────────────────────────────────────────────────
+function recalc() {
+  // update all out zone tags
+  document.querySelectorAll('[id^="out-r"][id$="-zip"]').forEach(el => {
+    const m = el.id.match(/^out-r(\d+)-zip$/); if (m) updateOutTag(parseInt(m[1]));
+  });
+ 
+  const localZips = getLocalZips();
+  const closeZips = getCloseZips();
+  const fmt$ = v => '$'+v.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
+ 
+  // eddy_1: node location — derived from home zip, not from flow data
+  const homeZip  = document.getElementById('home-zip').value.trim();
+  const nodeZone = classifyZip(homeZip, localZips, closeZips);
+  const tag = document.getElementById('e1-tag');
+  tag.className = `node-zone-tag zone-${nodeZone}`;
+  tag.textContent = homeZip ? {local:'LOCAL',close:'CLOSE',far:'FAR',void:'VOID'}[nodeZone] : '—';
+  document.getElementById('e1-label').textContent = homeZip
+    ? `this node is in the ${nodeZone} zone`
+    : 'set home zip + zone config';
+  // math array for e1
+  ['local','close','far','void'].forEach(z => {
+    document.getElementById(`e1-${z}`).textContent = (z === nodeZone && homeZip) ? '1.000' : '0.000';
+  });
+ 
+  // inflows — throughput is the denominator for all ratios
+  let throughput = 0;
+  document.getElementById('in-rows-container').querySelectorAll('input[type="number"]').forEach(el => {
+    throughput += parseFloat(el.value) || 0;
+  });
+ 
+  // outflows — sum by zone
+  let totals = {local:0, close:0, far:0, void:0};
+  let totalOut = 0;
+  document.getElementById('out-rows-container').querySelectorAll('.field-row').forEach(row => {
+    const numInputs  = row.querySelectorAll('input[type="number"]');
+    const textInputs = row.querySelectorAll('input[type="text"]');
+    const amt  = parseFloat(numInputs[0] ? numInputs[0].value : 0) || 0;
+    const zip  = textInputs[1] ? textInputs[1].value : ''; // second text = zip
+    const zone = classifyZip(zip, localZips, closeZips);
+    if (amt > 0) { totals[zone] += amt; totalOut += amt; }
+  });
+ 
+  // denominator: throughput if entered, else fall back to totalOut
+  const denom = throughput > 0 ? throughput : totalOut;
+ 
+  if (denom === 0) {
+    showEmpty('—');
+    return;
+  }
+ 
+  // ratios as fraction of throughput
+  const ratios = {
+    local: totals.local / denom,
+    close: totals.close / denom,
+    far:   totals.far   / denom,
+    void:  totals.void  / denom,
+  };
+ 
+  // unaccounted = throughput gap (money we know came in but has no outflow row)
+  const unaccounted = throughput > 0 ? Math.max(0, throughput - totalOut) / throughput : 0;
+  const voidTotal   = ratios.void + unaccounted;
+ 
+  // depth_2 = known outflows ÷ throughput
+  const depth2 = 1 - voidTotal;
+ 
+  // eddy_2 = local + (close × 0.5) as fraction of throughput
+  const e2 = ratios.local + ratios.close * 0.5;
+ 
+  // ── depth_2 display ──
+  document.getElementById('ss-val').textContent    = depth2.toFixed(3);
+  document.getElementById('ss-bar').style.width    = (depth2 * 100).toFixed(1) + '%';
+  document.getElementById('ss-label').textContent  = depth2Label(depth2);
+  document.getElementById('depth1-val').textContent = depth2.toFixed(3);
+ 
+  // ── eddy_2 display ──
+  document.getElementById('e2-val').textContent    = e2.toFixed(3);
+  document.getElementById('e2-bar').style.width    = (e2 * 100).toFixed(1) + '%';
+  document.getElementById('e2-label').textContent  = e2Label(e2);
+  const e2bar = document.getElementById('e2-bar');
+  if      (e2 >= 0.8) e2bar.style.background = 'var(--green)';
+  else if (e2 >= 0.6) e2bar.style.background = 'var(--amber)';
+  else if (e2 >= 0.4) e2bar.style.background = '#d0a030';
+  else                e2bar.style.background = 'var(--red)';
+ 
+  // ── math mode arrays ──
+  document.getElementById('e2-local').textContent = ratios.local.toFixed(3);
+  document.getElementById('e2-close').textContent = ratios.close.toFixed(3);
+  document.getElementById('e2-far').textContent   = ratios.far.toFixed(3);
+  document.getElementById('e2-void').textContent  = voidTotal.toFixed(3);
+  document.getElementById('e2-depth').textContent = depth2.toFixed(3);
+ 
+  // ── zone vector bar ──
+  const barRatios = { local: ratios.local, close: ratios.close, far: ratios.far, void: voidTotal };
+  ['local','close','far','void'].forEach(z => {
+    const el  = document.getElementById(`vb-${z}`);
+    const pct = barRatios[z] * 100;
+    el.style.width = pct.toFixed(1) + '%';
+    el.textContent = pct > 8 ? pct.toFixed(0) + '%' : '';
+  });
+ 
+  // ── legend ──
+  ['local','close','far'].forEach(z => {
+    document.getElementById(`l-${z}-pct`).textContent = (ratios[z] * 100).toFixed(1) + '%';
+    document.getElementById(`l-${z}-amt`).textContent = fmt$(totals[z]);
+  });
+  const voidAmt = totals.void + (throughput > 0 ? Math.max(0, throughput - totalOut) : 0);
+  document.getElementById('l-void-pct').textContent = (voidTotal * 100).toFixed(1) + '%';
+  document.getElementById('l-void-amt').textContent = fmt$(voidAmt);
+ 
+  document.getElementById('l-total').textContent = throughput > 0
+    ? fmt$(throughput) + ' / mo'
+    : fmt$(totalOut)   + ' / mo (outflows only — enter inflows for full picture)';
+ 
+  if (exportOpen) buildExport();
+}
+ 
+function showEmpty(throughput='—') {
+  document.getElementById('ss-val').textContent = '—';
+  document.getElementById('e2-val').textContent = '—';
+  document.getElementById('ss-bar').style.width = '0%';
+  document.getElementById('e2-bar').style.width = '0%';
+  document.getElementById('ss-label').textContent = 'fraction of outflows with known destination';
+  document.getElementById('e2-label').textContent = 'local + (close × 0.5)';
+  document.getElementById('depth1-val').textContent = '—';
+  ['local','close','far'].forEach(z => document.getElementById(`vb-${z}`).style.width='0%');
+  document.getElementById('vb-void').style.width='100%';
+  document.getElementById('vb-void').textContent='no data';
+  ['local','close','far','void'].forEach(z => {
+    document.getElementById(`l-${z}-pct`).textContent='—';
+    document.getElementById(`l-${z}-amt`).textContent='';
+  });
+  document.getElementById('l-total').textContent = throughput;
+  ['e2-local','e2-close','e2-far','e2-void','e2-depth'].forEach(id => {
+    document.getElementById(id).textContent='—';
+  });
+}
+ 
+// ── Labels ─────────────────────────────────────────────────────────────────
+function depth2Label(v) {
+  if (v>=0.9) return 'Nearly complete — most throughput accounted for';
+  if (v>=0.6) return 'Good coverage';
+  if (v>=0.3) return 'Partial — significant throughput unaccounted for';
+  return 'Low coverage — enter more outflows or inflow data';
+}
+function e2Label(v) {
+  if (v>=0.8) return 'Exceptional local circulation';
+  if (v>=0.6) return 'Strong local circulation';
+  if (v>=0.4) return 'Moderate local circulation';
+  if (v>=0.2) return 'Low local circulation';
+  return 'Very low local circulation';
+}
+ 
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+ 
+// ── Theme ───────────────────────────────────────────────────────────────────
+function toggleTheme() {
+  const light = document.body.classList.toggle('light');
+  document.getElementById('theme-btn').textContent = light ? '● dark' : '☀ light';
+}
+ 
+// ── Init ───────────────────────────────────────────────────────────────────
+renderZipLists();
+addOutRow(); addOutRow(); addOutRow();
+addInRow();
+</script>
+</body>
+</html>
+ 
