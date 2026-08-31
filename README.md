@@ -106,6 +106,6 @@ AGPL specifically, rather than GPL: the network clause means a modified version 
 - GitHub: https://github.com/OutlandishApparatus/rveirs
 - YouTube: https://www.youtube.com/@OutlandishApparatus
 - itch.io: (link later, try a search if you like. it's there somewhere. I'm just disorganized and haven't got back with the actual link)
-- Patreon: https://patreon.com/OutlandishApparatus?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink 
+- Patreon: (link later here also) 
 
 *Outlandish Apparatus. Instruments for observing things unseen.*
