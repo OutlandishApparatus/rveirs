@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#131311">
+<link rel="manifest" href="manifest.webmanifest">
+<title>RVEIRS — Zipsum Calculator v0.3</title>
+<style>
+  :root {
+    --bg:      #131311;
+    --panel:   #1b1b18;
+    --panel2:  #201f1b;
+    --line:    #2e2d28;
+    --text:    #e9e6da;
+    --muted:   #8b887c;
+    --amber:   #f0a500;
+    --err:     #d05050;
+    --local:   #FBE96A;
+    --close:   #F2A63C;
+    --far:     #8F2018;
+    --farlift: #b03a2e; /* far, lifted for text on dark */
+    --voidln:  #6a675e;
+    --mono: ui-monospace, 'Cascadia Mono', 'SF Mono', Menlo, Consolas, monospace;
+    --sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: var(--sans); font-size: 14px; line-height: 1.45;
+    padding: 14px; min-height: 100vh;
+  }
+  .shell { max-width: 1020px; margin: 0 auto; display: grid;
+           grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 14px; }
+  .head, .foot { grid-column: 1 / -1; }
+  @media (max-width: 720px) { .shell { grid-template-columns: 1fr; } }
+
+  .head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+          border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+  .head h1 { font-family: var(--mono); font-size: 16px; font-weight: 600; letter-spacing: .02em; }
+  .head .ver { color: var(--muted); font-family: var(--mono); font-size: 12px; }
+  .head .tag { color: var(--muted); font-size: 12px; margin-left: auto; }
+
+  .panel { background: var(--panel); border: 1px solid var(--line); padding: 12px; }
+  .panel h2 { font-size: 12px; font-weight: 600; color: var(--muted);
+              margin-bottom: 9px; letter-spacing: .03em; }
+  .col { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+
+  label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 3px; }
+  input[type=text], input[type=number], input[type=date], select, textarea {
+    width: 100%; background: var(--panel2); color: var(--text);
+    border: 1px solid var(--line); border-radius: 2px;
+    padding: 6px 8px; font-family: var(--mono); font-size: 13px;
+  }
+  input:focus, select:focus, textarea:focus, button:focus-visible {
+    outline: 2px solid var(--amber); outline-offset: 0; }
+  textarea { min-height: 54px; resize: vertical; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+  button {
+    background: var(--panel2); color: var(--text); border: 1px solid var(--line);
+    border-radius: 2px; padding: 6px 12px; font-family: var(--sans); font-size: 13px;
+    cursor: pointer;
+  }
+  button:hover { border-color: var(--amber); }
+  button.primary { border-color: var(--amber); color: var(--amber); }
+  button.small { padding: 2px 8px; font-size: 12px; }
+
+  /* ledger */
+  .ledger { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 12.5px; }
+  .ledger th { text-align: left; color: var(--muted); font-weight: 400; font-size: 11px;
+               padding: 2px 4px; border-bottom: 1px solid var(--line); font-family: var(--sans); }
+  .ledger td { padding: 2px 2px; vertical-align: top; }
+  .ledger input { padding: 4px 6px; font-size: 12.5px; }
+  .ledger .amt { text-align: right; }
+  td.zonecell { width: 52px; font-size: 10.5px; padding-top: 8px; white-space: nowrap; }
+  .zl { color: var(--local); } .zc { color: var(--close); }
+  .zf { color: var(--farlift); } .zv { color: var(--voidln); }
+  .rowerr td { padding-bottom: 4px; }
+  .rowerr .msg { color: var(--err); font-size: 11px; font-family: var(--sans); }
+  .totline { font-family: var(--mono); font-size: 12.5px; color: var(--muted);
+             margin-top: 8px; display: flex; justify-content: space-between; }
+  .totline b { color: var(--text); font-weight: 500; }
+
+  /* readout */
+  .laybox { border: 1px solid var(--line); background: var(--panel2);
+            padding: 10px 12px 12px; margin-bottom: 10px; }
+  .laybox .ltitle { display: flex; justify-content: space-between; align-items: baseline;
+                    margin-bottom: 8px; }
+  .laybox .ltitle span:first-child { font-family: var(--mono); font-size: 12px; color: var(--amber); }
+  .laybox .ltitle .flow { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .bignums { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; text-align: left; }
+  .bignums .cell .z { font-size: 11px; color: var(--muted); }
+  .bignums .cell .n { font-family: var(--mono); font-size: 21px; font-weight: 600; }
+  @media (max-width: 380px) { .bignums .cell .n { font-size: 18px; } }
+  .n.local { color: var(--local); } .n.close { color: var(--close); }
+  .n.far { color: var(--farlift); } .n.void { color: var(--voidln); }
+  .trackedline { font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+                 margin: 7px 0 6px; }
+  .bar { display: flex; height: 16px; width: 100%; }
+  .bar .seg { height: 100%; min-width: 0; }
+  .seg.local { background: var(--local); }
+  .seg.close { background: var(--close); }
+  .seg.far   { background: var(--far); }
+  .seg.void  { background: transparent; border: 1px dashed var(--voidln); border-left-width: 0; }
+  .bar .seg.void:first-child { border-left-width: 1px; }
+
+  .eddyline { font-family: var(--mono); font-size: 13px; margin-top: 4px; }
+  .eddyline b { color: var(--amber); font-weight: 600; }
+  .eddyline .dim { color: var(--muted); font-size: 11.5px; }
+  .quiet { color: var(--muted); font-size: 12px; }
+  .warn { color: var(--amber); font-size: 12px; }
+  .error { color: var(--err); font-size: 12px; }
+  .banner { border: 1px solid var(--err); color: var(--err); padding: 8px 10px;
+            font-family: var(--mono); font-size: 12.5px; margin-bottom: 10px; }
+
+  /* audit + import lists */
+  details { margin-top: 8px; }
+  summary { cursor: pointer; color: var(--muted); font-size: 12px; }
+  .audit { font-family: var(--mono); font-size: 11.5px; margin-top: 6px; }
+  .audit div { padding: 1px 0; color: var(--muted); }
+  .audit .zn { display: inline-block; width: 44px; }
+  ul.plain { list-style: none; font-size: 12.5px; }
+  ul.plain li { padding: 2px 0; }
+  ul.plain .fn { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+
+  .presetrow { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+  .note { font-size: 11.5px; color: var(--muted); margin-top: 6px; }
+  .foot { color: var(--muted); font-size: 11.5px; border-top: 1px solid var(--line);
+          padding-top: 8px; }
+  .foot span { font-family: var(--mono); }
+  input[type=checkbox], input[type=radio] { accent-color: var(--amber); }
+  .inline { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px;
+            color: var(--text); margin-right: 14px; }
+  .filedrop { border: 1px dashed var(--line); padding: 14px; text-align: center;
+              color: var(--muted); font-size: 12.5px; cursor: pointer; }
+  .filedrop.drag { border-color: var(--amber); color: var(--amber); }
+  @media (prefers-reduced-motion: no-preference) {
+    .bar .seg { transition: width .25s ease; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="head">
+    <h1>rveirs zipsum calculator</h1>
+    <span class="ver">v0.3</span>
+    <span class="tag">runs on your device — nothing is sent anywhere</span>
+  </div>
+
+  <div class="col">
+    <div class="panel">
+      <h2>Business</h2>
+      <div class="grid2">
+        <div><label for="bname">Name</label><input type="text" id="bname" placeholder="Main Street Diner"></div>
+        <div><label for="bzip">Home zip</label><input type="text" id="bzip" inputmode="numeric" placeholder="72901"></div>
+      </div>
+      <div class="presetrow">
+        <button class="small" data-preset="diner">Example: Main Street Diner</button>
+        <button class="small" data-preset="grocer">Example: outside-owned, high local</button>
+        <button class="small" data-preset="outfitter">Example: locally owned, high leakage</button>
+        <button class="small" data-preset="harvest">Example: Harvest Table (import test)</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Zones — set by the network, not by you</h2>
+      <div class="grid2">
+        <div>
+          <label for="zlocal">Local is</label>
+          <select id="zlocal">
+            <option value="zip">my zip</option>
+            <option value="city">my city</option>
+            <option value="county" selected>my county</option>
+            <option value="state">my state</option>
+            <option value="us">US</option>
+            <option value="custom">custom list</option>
+          </select>
+          <textarea id="zlocalcustom" hidden placeholder="zips, space or comma separated"></textarea>
+        </div>
+        <div>
+          <label for="zclose">Close is</label>
+          <select id="zclose">
+            <option value="zip">my zip</option>
+            <option value="city">my city</option>
+            <option value="county">my county</option>
+            <option value="state" selected>my state</option>
+            <option value="us">US</option>
+            <option value="custom">custom list</option>
+          </select>
+          <textarea id="zclosecustom" hidden placeholder="zips, space or comma separated"></textarea>
+        </div>
+      </div>
+      <div id="zonenotes" class="note"></div>
+      <div class="note"><b>Everyone in a network uses the same zones.</b> A reading is only
+        comparable to another reading drawn on the same partition — change where the lines are
+        and the same books produce a different number. Within one network with fixed zones you
+        can compare firms to each other and yourself to yourself over time. Across networks
+        drawn differently, you cannot, and nothing here claims you can.</div>
+      <div class="note">Everything else is far. Blank zip or 99999 is void — money whose trail
+        ends. City and county resolve from a pilot table that covers a few Arkansas counties and
+        is a placeholder until real HUD data is imported — check the resolved list below before
+        trusting it.</div>
+      <details><summary>Resolved zone zips</summary><div id="zoneresolved" class="audit"></div></details>
+    </div>
+
+    <div class="panel">
+      <h2>Outflows</h2>
+      <table class="ledger" aria-label="spending rows">
+        <thead><tr><th>Date</th><th>Paid to</th><th>Amount</th><th>Zip</th><th></th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div style="margin-top:8px"><button id="addrow">Add row</button></div>
+      <div class="totline"><span>Total outflow</span><b id="total">$0.00</b></div>
+      <details><summary>Audit trail — which row landed where, and why</summary>
+        <div id="audit" class="audit"></div></details>
+    </div>
+
+    <div class="panel">
+      <h2>Import zipsums</h2>
+      <div class="filedrop" id="drop" role="button" tabindex="0">
+        Drop counterparty zipsum files here, or tap to choose.
+        <input type="file" id="fileinput" multiple hidden accept=".txt,.zipsum,text/plain">
+      </div>
+      <div id="importlist"></div>
+      <div class="note">Imported figures are shown as reported, not as confirmed —
+        nothing here can check whether another business told the truth.</div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="panel">
+      <h2>Readout</h2>
+      <div id="banner"></div>
+      <div id="readout"><div class="quiet">Add outflow rows to see the breakdown.</div></div>
+      <div id="eddy"></div>
+      <label class="inline" style="margin-top:8px"><input type="checkbox" id="includeclose">
+        count close with local in eddy</label>
+    </div>
+
+    <div class="panel">
+      <h2>Export zipsum</h2>
+      <div class="grid2">
+        <div>
+          <label>Period</label>
+          <span class="inline"><input type="radio" name="ptype" value="week" id="pweek" checked>
+            <label for="pweek" style="display:inline;margin:0">week</label></span>
+          <span class="inline"><input type="radio" name="ptype" value="month" id="pmonth">
+            <label for="pmonth" style="display:inline;margin:0">month</label></span>
+        </div>
+        <div>
+          <label for="period">Which period</label>
+          <select id="period"></select>
+        </div>
+      </div>
+      <div class="note" style="margin-top:8px">No dollar amounts go in the file — only shares
+        of the period's outflow. Throughput was removed in v0.3: multiplied by a rate it gives
+        an exact payment into a zip, which in a thinly populated zip names the recipient.</div>
+      <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap">
+        <button class="primary" id="export">Export zipsum file</button>
+        <button id="preview">Preview file</button>
+      </div>
+      <pre id="previewbox" hidden style="margin-top:10px; font-family:var(--mono); font-size:11px;
+        color:var(--muted); white-space:pre-wrap; border:1px solid var(--line); padding:8px;
+        max-height:220px; overflow:auto"></pre>
+      <div class="note">One period per file. The file is plain text — openable anywhere,
+        readable without this software.</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    Rates are shares of this layer's outflow; the four always sum to 1. The tracked line under
+    the numbers is what the other three can speak for. Eddy is shown as a pair and only with
+    imported data — at depth 1 there is nothing to recirculate through. No dollar figures leave
+    this device.
+    <span>rveirs</span> · AGPL · v0.3
+  </div>
+</div>
+
+<script>/* RVEIRS zipsum core v0.1 — pure math, no DOM.
+   LCFV sum to 1.0. Tracked = 1 - void, displayed, never a denominator for zones.
+   Eddy = ratio of sums across layers, uncompressed pair, never without depth.
+   No weighting anywhere. See spec_zipsum-calculator-v4.md. */
+(function (root) {
+  'use strict';
+
+  // ---------- zip handling ----------
+  function normZip(s) {
+    if (s == null) return '';
+    s = String(s).trim().replace(/[\s-]+/g, '');
+    if (/^\d{9}$/.test(s)) s = s.slice(0, 5);          // zip+4 -> 5
+    return s;
+  }
+  function isVoidZip(z) { return z === '' || z === '99999'; }
+  function isZip(z) { return /^\d{5}$/.test(z); }
+
+  // USPS 3-digit prefix -> state (standard published ranges; best-effort)
+  const STATE_RANGES = [
+    ['005', '005', 'NY'], ['010', '027', 'MA'], ['028', '029', 'RI'], ['030', '038', 'NH'],
+    ['039', '049', 'ME'], ['050', '059', 'VT'], ['060', '069', 'CT'], ['070', '089', 'NJ'],
+    ['100', '149', 'NY'], ['150', '196', 'PA'], ['197', '199', 'DE'], ['200', '205', 'DC'],
+    ['206', '219', 'MD'], ['220', '246', 'VA'], ['247', '268', 'WV'], ['270', '289', 'NC'],
+    ['290', '299', 'SC'], ['300', '319', 'GA'], ['320', '349', 'FL'], ['350', '369', 'AL'],
+    ['370', '385', 'TN'], ['386', '397', 'MS'], ['398', '399', 'GA'], ['400', '427', 'KY'],
+    ['430', '459', 'OH'], ['460', '479', 'IN'], ['480', '499', 'MI'], ['500', '528', 'IA'],
+    ['530', '549', 'WI'], ['550', '567', 'MN'], ['570', '577', 'SD'], ['580', '588', 'ND'],
+    ['590', '599', 'MT'], ['600', '629', 'IL'], ['630', '658', 'MO'], ['660', '679', 'KS'],
+    ['680', '693', 'NE'], ['700', '714', 'LA'], ['716', '729', 'AR'], ['730', '749', 'OK'],
+    ['750', '799', 'TX'], ['800', '816', 'CO'], ['820', '831', 'WY'], ['832', '838', 'ID'],
+    ['840', '847', 'UT'], ['850', '865', 'AZ'], ['870', '884', 'NM'], ['885', '885', 'TX'],
+    ['889', '898', 'NV'], ['900', '961', 'CA'], ['967', '968', 'HI'], ['970', '979', 'OR'],
+    ['980', '994', 'WA'], ['995', '999', 'AK']
+  ];
+  function stateOfZip(z) {
+    if (!isZip(z)) return null;
+    const p = z.slice(0, 3);
+    for (const [lo, hi, st] of STATE_RANGES) if (p >= lo && p <= hi) return st;
+    return null;
+  }
+
+  // Pilot crosswalk. PLACEHOLDER — unverified, pending real HUD import.
+  // County sets keyed by any member zip. Carroll set mirrors the generator config.
+  const PILOT_COUNTIES = {
+    carroll_ar:  ['72611', '72616', '72631', '72632', '72638', '72661', '72660'],
+    sebastian_ar:['72901', '72902', '72903', '72904', '72905', '72906', '72908', '72913',
+                  '72914', '72916', '72917', '72918', '72919', '72923', '72936', '72937',
+                  '72938', '72940', '72941', '72944', '72945'],
+    crawford_ar: ['72921', '72932', '72934', '72935', '72946', '72947', '72948', '72952',
+                  '72955', '72956', '72957']
+  };
+  const PILOT_CITIES = {
+    eureka_springs_ar: ['72631', '72632'],
+    berryville_ar:     ['72616'],
+    fort_smith_ar:     ['72901', '72902', '72903', '72904', '72905', '72906', '72908',
+                        '72913', '72914', '72916', '72917', '72918', '72919'],
+    van_buren_ar:      ['72956', '72957'],
+    greenwood_ar:      ['72936']
+  };
+  function lookupGroup(table, zip) {
+    for (const key in table) if (table[key].indexOf(zip) !== -1) return { key, zips: table[key] };
+    return null;
+  }
+
+  // ---------- zone config ----------
+  // preset: 'zip' | 'city' | 'county' | 'state' | 'us' | 'custom'
+  const SCALE = { zip: 0, city: 1, county: 2, state: 3, us: 4 };
+
+  function buildZoneConfig(homeZip, localPreset, closePreset, customLocal, customClose) {
+    homeZip = normZip(homeZip);
+    const notes = [];
+    function resolve(preset, customText, label) {
+      switch (preset) {
+        case 'zip':    return { mode: 'set', set: new Set([homeZip]), token: 'my zip' };
+        case 'city': {
+          const g = lookupGroup(PILOT_CITIES, homeZip);
+          if (!g) { notes.push('No city data for ' + (homeZip || 'your zip') + ' yet (pilot crosswalk). Pick another ' + label + ' preset or use a custom list.'); return null; }
+          return { mode: 'set', set: new Set(g.zips), token: 'my city' };
+        }
+        case 'county': {
+          const g = lookupGroup(PILOT_COUNTIES, homeZip);
+          if (!g) { notes.push('No county data for ' + (homeZip || 'your zip') + ' yet (pilot crosswalk). Pick another ' + label + ' preset or use a custom list.'); return null; }
+          return { mode: 'set', set: new Set(g.zips), token: 'my county' };
+        }
+        case 'state': {
+          const st = stateOfZip(homeZip);
+          if (!st) { notes.push('Home zip needed before "my state" can resolve.'); return null; }
+          return { mode: 'state', state: st, token: 'my state' };
+        }
+        case 'us':     return { mode: 'us', token: 'US' };
+        case 'custom': {
+          const set = new Set(String(customText || '').split(/[\s,;]+/).map(normZip).filter(isZip));
+          if (!set.size) { notes.push('Custom ' + label + ' list is empty.'); return null; }
+          return { mode: 'set', set, token: 'custom' };
+        }
+        default: return null;
+      }
+    }
+    // superset rule: close must not be narrower than local (presets only; custom is user's own claim)
+    let lp = localPreset, cp = closePreset, swapped = false;
+    if (lp in SCALE && cp in SCALE && SCALE[cp] < SCALE[lp]) { const t = lp; lp = cp; cp = t; swapped = true; }
+    const local = resolve(lp, customLocal, 'local');
+    const close = resolve(cp, customClose, 'close');
+    if (swapped) notes.push('Close must contain local — presets were swapped to keep that true.');
+    return { homeZip, local, close, notes, swapped, localPreset: lp, closePreset: cp };
+  }
+
+  function inScope(scope, zip) {
+    if (!scope) return false;
+    if (scope.mode === 'us') return isZip(zip);
+    if (scope.mode === 'state') return stateOfZip(zip) === scope.state;
+    return scope.set.has(zip);
+  }
+
+  // Order matters: void, then local (local wins on overlap), then close, then far.
+  function classify(cfg, rawZip) {
+    const zip = normZip(rawZip);
+    if (isVoidZip(zip)) return { zone: 'void', zip, reason: zip === '99999' ? '99999 = untracked' : 'no destination' };
+    if (!isZip(zip)) return { zone: 'void', zip, reason: 'unreadable zip "' + rawZip + '" — treated as untracked' };
+    if (inScope(cfg.local, zip)) return { zone: 'local', zip, reason: zip + ' in ' + (cfg.local.token || 'local') };
+    if (inScope(cfg.close, zip)) return { zone: 'close', zip, reason: zip + ' in ' + (cfg.close.token || 'close') };
+    return { zone: 'far', zip, reason: zip + ' outside local and close' };
+  }
+
+  // ---------- ledger math ----------
+  // rows: [{date, name, amount, zip}] ; returns per-row audit + totals + vector
+  function computeL1(cfg, rows) {
+    const audit = [];
+    const sums = { local: 0, close: 0, far: 0, void: 0 };
+    let total = 0;
+    const perCounterparty = new Map();   // nameKey -> {name, zip, amount}
+    const perZip = new Map();            // zip -> amount (void keyed as '99999')
+    const perDayZip = new Map();         // 'day|zip' -> amount
+    for (const r of rows) {
+      const amt = Number(r.amount);
+      if (r.amount === '' || r.amount == null) { audit.push({ row: r, ok: false, err: 'amount missing' }); continue; }
+      if (!isFinite(amt)) { audit.push({ row: r, ok: false, err: 'amount is not a number' }); continue; }
+      if (amt < 0) { audit.push({ row: r, ok: false, err: 'negative amount — refunds are inflows, not negative outflows' }); continue; }
+      if (amt === 0) { audit.push({ row: r, ok: false, err: 'zero amount' }); continue; }
+      const c = classify(cfg, r.zip);
+      total += amt;
+      sums[c.zone] += amt;
+      audit.push({ row: r, ok: true, zone: c.zone, zip: c.zip, reason: c.reason });
+      const zkey = c.zone === 'void' ? '99999' : c.zip;
+      perZip.set(zkey, (perZip.get(zkey) || 0) + amt);
+      const day = (r.date || '').trim();
+      const dk = day + '|' + zkey;
+      perDayZip.set(dk, (perDayZip.get(dk) || 0) + amt);
+      const nk = String(r.name || '').trim().toLowerCase();
+      if (nk) {
+        const prev = perCounterparty.get(nk) || { name: r.name.trim(), zip: c.zip, amount: 0 };
+        prev.amount += amt; if (!prev.zip && c.zip) prev.zip = c.zip;
+        perCounterparty.set(nk, prev);
+      }
+    }
+    let vector = null, sumCheck = null;
+    if (total > 0) {
+      vector = {
+        local: sums.local / total, close: sums.close / total,
+        far: sums.far / total, void: sums.void / total
+      };
+      sumCheck = vector.local + vector.close + vector.far + vector.void;
+    }
+    return { audit, total, sums, vector, sumCheck, perCounterparty, perZip, perDayZip };
+  }
+
+  // ---------- periods ----------
+  function isoWeekId(dateStr) {
+    const d = parseDate(dateStr); if (!d) return null;
+    const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    const day = t.getUTCDay() || 7;
+    t.setUTCDate(t.getUTCDate() + 4 - day);
+    const y0 = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
+    const wk = Math.ceil(((t - y0) / 86400000 + 1) / 7);
+    return t.getUTCFullYear() + '-W' + String(wk).padStart(2, '0');
+  }
+  function monthId(dateStr) {
+    const d = parseDate(dateStr); if (!d) return null;
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+  }
+  function parseDate(s) {
+    if (!s) return null;
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s).trim());
+    if (!m) return null;
+    const d = new Date(+m[1], +m[2] - 1, +m[3]);
+    return isNaN(d) ? null : d;
+  }
+  function periodOf(dateStr, type) { return type === 'month' ? monthId(dateStr) : isoWeekId(dateStr); }
+
+  // ---------- zipsum file format ----------
+  //   zipsum,v0.3 / name / zip / period / zones / rows,day,rate,zip / end
+  //
+  // v0.2 dropped layer (topology is derived, not declared), depth and eddy (the sender's
+  // view of a network the receiver recomputes from their own position).
+  //
+  // v0.3 drops THROUGHPUT. It bought weighted aggregates and clustering, both of which
+  // need a tier that aggregates across firms — which a serverless per-device tool does
+  // not have. So it purchased nothing here while being the largest leak in the file:
+  // rate x throughput is an exact dollar figure to a zip, and in a rural zip with one
+  // plausible recipient that reconstructs a payment the format is supposed to destroy.
+  // Reintroduce it only alongside an aggregating tier that can actually spend it.
+  //
+  // ZONES ARE A NETWORK-LEVEL CHOICE, not a per-firm one. A zonal statistic computed
+  // under a partition the reader chose is only comparable to other readings under the
+  // same partition (this is the modifiable areal unit problem). Firms in one network
+  // share a partition and are comparable to each other; nothing claims comparability
+  // across networks.
+  function serializeZipsum(h, rowTriples) {
+    const L = [];
+    L.push('zipsum,v0.3');
+    L.push('name,' + String(h.name || '').replace(/,/g, ';'));
+    L.push('zip,' + normZip(h.zip));
+    L.push('period,' + h.periodType + ',' + h.periodId);
+    L.push('zones,local=' + h.localToken + ',close=' + h.closeToken);
+    L.push('rows,day,rate,zip');
+    for (const [day, rate, zip] of rowTriples) L.push(day + ',' + rate.toFixed(6) + ',' + zip);
+    L.push('end,zipsum');
+    return L.join('\n');
+  }
+
+  function parseZipsum(text, filename) {
+    const bad = (why) => ({ ok: false, filename, why });
+    if (typeof text !== 'string') return bad('not text');
+    const lines = text.replace(/\r/g, '').split('\n').map(s => s.trim()).filter(s => s.length);
+    if (!lines.length) return bad('empty file');
+    const ver = /^zipsum,v0\.([123])$/.exec(lines[0]);
+    if (!ver) return bad('missing zipsum,v0.3 header');
+    const legacy = ver[1] !== '3';
+    const h = { version: 'v0.' + ver[1], name: '', zip: '' };
+    const rows = [];
+    let inRows = false, ended = false;
+    for (let i = 1; i < lines.length; i++) {
+      const ln = lines[i];
+      if (ln === 'end,zipsum') { ended = true; break; }
+      if (inRows) {
+        const p = ln.split(',');
+        if (p.length !== 3) return bad('bad row: "' + ln + '"');
+        const rate = Number(p[1]);
+        if (!isFinite(rate) || rate < 0) return bad('bad rate in row: "' + ln + '"');
+        rows.push({ day: p[0], rate, zip: normZip(p[2]) });
+        continue;
+      }
+      const c = ln.indexOf(',');
+      if (c < 0) return bad('bad line: "' + ln + '"');
+      const key = ln.slice(0, c), val = ln.slice(c + 1);
+      switch (key) {
+        case 'name': h.name = val; break;
+        case 'zip': h.zip = normZip(val); break;
+        case 'period': { const p = val.split(','); h.periodType = p[0]; h.periodId = p[1]; break; }
+        case 'zones': {
+          h.zonesRaw = val;
+          const lm = /local=([^,]*)/.exec(val), cm = /close=([^,]*)/.exec(val);
+          h.localToken = lm ? lm[1] : null; h.closeToken = cm ? cm[1] : null;
+          break;
+        }
+        case 'rows': inRows = true; break;
+        // fields removed in earlier versions: read from legacy files, discarded
+        case 'throughput':
+          if (!legacy) return bad('"throughput" was removed in v0.3 — it leaks exact dollar amounts and buys nothing without an aggregating tier');
+          h.legacyThroughput = Number(val); break;
+        case 'layer': case 'depth': case 'eddy': case 'includeclose':
+          if (!legacy) return bad('"' + key + '" was removed in v0.2 — the receiver derives it');
+          break;
+        default: return bad('unknown header "' + key + '"');
+      }
+    }
+    if (!ended) return bad('missing end,zipsum');
+    if (!h.zip) return bad('missing zip header');
+    const rateSum = rows.reduce((a, r) => a + r.rate, 0);
+    return { ok: true, filename, header: h, rows, rateSum, legacy,
+             empty: rows.length === 0 };
+  }
+
+  // ---------- recursion ----------
+  // l1: result of computeL1. files: array of parseZipsum results (ok, non-empty).
+  // Layer is DERIVED, never declared. Pass 1 matches files against your own ledger -> L2.
+  // Each later pass matches remaining files against the rows of files already placed,
+  // so your supplier's supplier lands at L3 without anyone having to say so.
+  // Contributions to the same zip in the same layer SUM — the shared-node case.
+  function recurse(cfg, l1, files) {
+    const layers = [];   // index 0 = L1
+    const z1 = l1.vector || { local: 0, close: 0, far: 0, void: 0 };
+    layers.push({ layer: 1, flow: 1.0,
+      abs: { local: z1.local, close: z1.close, far: z1.far, void: z1.void }, contribs: null });
+
+    // zip -> counterparty nameKeys from your own ledger
+    const zipNames = new Map();
+    for (const [nk, c] of l1.perCounterparty) {
+      if (!zipNames.has(c.zip)) zipNames.set(c.zip, []);
+      zipNames.get(c.zip).push(nk);
+    }
+
+    const matches = [], unmatched = [];
+    const placed = [];                       // {file, share, atLayer}
+    let pool = files.slice();
+
+    function ensureLayer(n) {
+      while (layers.length < n) layers.push({ layer: layers.length + 1, flow: 0,
+        abs: { local: 0, close: 0, far: 0, void: 0 }, contribs: [] });
+      return layers[n - 1];
+    }
+    function place(f, share, atLayer, how, matchName, via, approx) {
+      const L = ensureLayer(atLayer);
+      let contributed = 0;
+      for (const r of f.rows) {
+        const c = classify(cfg, r.zip);
+        const amt = share * r.rate;
+        L.abs[c.zone] += amt; L.flow += amt; contributed += amt;
+      }
+      L.contribs.push({ name: matchName, file: f.filename, share, how, contributed });
+      matches.push({ filename: f.filename, name: matchName, share, how, atLayer, via,
+                     approx: !!approx });
+      placed.push({ file: f, share, atLayer });
+    }
+
+    // pass 1 — against your ledger
+    let next = [];
+    for (const f of pool) {
+      const nameKey = String(f.header.name || '').trim().toLowerCase();
+      if (nameKey && l1.perCounterparty.has(nameKey)) {
+        const c = l1.perCounterparty.get(nameKey);
+        place(f, c.amount / l1.total, 2, 'name', c.name, null, false);
+      } else if (f.header.zip && zipNames.get(f.header.zip) && zipNames.get(f.header.zip).length === 1) {
+        const nk = zipNames.get(f.header.zip)[0];
+        const c = l1.perCounterparty.get(nk);
+        place(f, c.amount / l1.total, 2, 'zip', c.name, null,
+              files.filter(x => x.header.zip === f.header.zip).length > 1);
+      } else next.push(f);
+    }
+    pool = next;
+
+    // passes 2..n — against files already placed.
+    // A zipsum row carries a zip, not an entity. When several placed files send money
+    // into the same zip, the data cannot say which of them paid this business, or
+    // whether more than one did. Sum every inbound path and mark the result approximate
+    // rather than pick one and pretend. This ambiguity is the privacy model showing up
+    // as a limit on attribution — it is not a bug to be fixed.
+    let guard = 0;
+    while (pool.length && guard++ < 8) {
+      next = [];
+      let progressed = false;
+      for (const f of pool) {
+        const paths = [];
+        let shallowest = Infinity;
+        for (const p of placed) {
+          const rate = p.file.rows.reduce((a, r) => a + (r.zip === f.header.zip ? r.rate : 0), 0);
+          if (rate > 0) { paths.push({ via: p.file.header.name, amt: p.share * rate, at: p.atLayer + 1 });
+                          if (p.atLayer + 1 < shallowest) shallowest = p.atLayer + 1; }
+        }
+        if (!paths.length) { next.push(f); continue; }
+        const share = paths.reduce((a, p) => a + p.amt, 0);
+        const sameZip = files.filter(x => x.header.zip === f.header.zip).length;
+        place(f, share, shallowest, 'chain', f.header.name,
+              paths.map(p => p.via).join(' + '),
+              paths.length > 1 || sameZip > 1);
+        progressed = true;
+      }
+      pool = next;
+      if (!progressed) break;
+    }
+    for (const f of pool) {
+      unmatched.push({ filename: f.filename, name: f.header.name, zip: f.header.zip,
+        why: zipNames.has(f.header.zip)
+          ? 'several of your counterparties share zip ' + f.header.zip + ', and the name in the file matches none of them'
+          : 'nothing in your ledger, or in any file already imported, sends money to ' + (f.header.zip || 'this zip') });
+    }
+
+    for (const L of layers) {
+      if (L.flow > 0) {
+        L.vector = { local: L.abs.local / L.flow, close: L.abs.close / L.flow,
+                     far: L.abs.far / L.flow, void: L.abs.void / L.flow };
+        L.tracked = 1 - L.vector.void;
+      }
+    }
+    const active = layers.filter(L => L.flow > 0);
+    const depth = active.length;
+    let eddy = null;
+    if (depth >= 2) {
+      let num = 0, den = 0;
+      for (const L of active) {
+        den += L.flow - L.abs.void;
+        num += L.abs.local + (cfg.includeClose ? L.abs.close : 0);
+      }
+      eddy = { num, den };   // uncompressed pair; ratio of sums, never mean of ratios
+    }
+    return { layers: active, depth, eddy, matches, unmatched };
+  }
+
+  function round2(x) { return Math.round(x * 100) / 100; }
+
+  const ZS = { normZip, isZip, isVoidZip, stateOfZip, buildZoneConfig, classify, computeL1,
+               isoWeekId, monthId, periodOf, parseDate, serializeZipsum, parseZipsum, recurse,
+               PILOT_COUNTIES, PILOT_CITIES };
+  root.ZS = ZS;
+  if (typeof module !== 'undefined' && module.exports) module.exports = ZS;
+})(typeof self !== 'undefined' ? self : this);
+</script>
+<script>
+(function () {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  const state = { rows: [], imports: [] };
+
+  // ---------- ledger rows ----------
+  function addRow(r) {
+    state.rows.push(Object.assign({ date: '', name: '', amount: '', zip: '' }, r || {}));
+    render();
+  }
+  function rowInput(i, key, val) { state.rows[i][key] = val; render(); }
+  function delRow(i) { state.rows.splice(i, 1); render(); }
+
+  function renderRows(l1) {
+    const tb = $('rows'); tb.innerHTML = '';
+    state.rows.forEach((r, i) => {
+      const a = l1 ? l1.audit[i] : null;
+      const tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td><input type="date" value="' + esc(r.date) + '" data-k="date"></td>' +
+        '<td><input type="text" value="' + esc(r.name) + '" data-k="name" placeholder="who"></td>' +
+        '<td><input type="text" inputmode="decimal" class="amt" value="' + esc(r.amount) + '" data-k="amount" placeholder="0"></td>' +
+        '<td><input type="text" inputmode="numeric" value="' + esc(r.zip) + '" data-k="zip" placeholder="zip" style="width:70px"></td>' +
+        '<td class="zonecell">' + (a && a.ok ? '<span class="z' + a.zone[0] + '">' + a.zone + '</span>' : '') + '</td>' +
+        '<td><button class="small" data-del="1" aria-label="remove row">×</button></td>';
+      tr.querySelectorAll('input').forEach(inp => {
+        inp.addEventListener('change', e => rowInput(i, e.target.dataset.k, e.target.value));
+      });
+      tr.querySelector('[data-del]').addEventListener('click', () => delRow(i));
+      tb.appendChild(tr);
+      if (a && !a.ok) {
+        const er = document.createElement('tr'); er.className = 'rowerr';
+        er.innerHTML = '<td></td><td colspan="5"><span class="msg">' + esc(a.err) + ' — row left out of the math</span></td>';
+        tb.appendChild(er);
+      }
+    });
+  }
+
+  // ---------- main render ----------
+  function currentCfg() {
+    const cfg = ZS.buildZoneConfig($('bzip').value, $('zlocal').value, $('zclose').value,
+      $('zlocalcustom').value, $('zclosecustom').value);
+    cfg.includeClose = $('includeclose').checked;
+    return cfg;
+  }
+
+  function render() {
+    const cfg = currentCfg();
+    // keep selects honest if swap happened
+    if (cfg.swapped) { $('zlocal').value = cfg.localPreset; $('zclose').value = cfg.closePreset; }
+    $('zlocalcustom').hidden = $('zlocal').value !== 'custom';
+    $('zclosecustom').hidden = $('zclose').value !== 'custom';
+    $('zonenotes').innerHTML = cfg.notes.map(n => '<div class="warn">' + esc(n) + '</div>').join('');
+    $('zoneresolved').innerHTML = describeScope('local', cfg.local) + describeScope('close', cfg.close);
+
+    const l1 = ZS.computeL1(cfg, state.rows);
+    renderRows(l1);
+    $('total').textContent = fmt$(l1.total);
+    $('audit').innerHTML = l1.audit.filter(a => a.ok).map(a =>
+      '<div><span class="zn z' + a.zone[0] + '">' + a.zone + '</span> ' +
+      fmt$(Number(a.row.amount)) + ' — ' + esc(a.reason) + '</div>').join('');
+
+    // sum check
+    $('banner').innerHTML = '';
+    if (l1.vector && Math.abs(l1.sumCheck - 1) > 1e-9) {
+      $('banner').innerHTML = '<div class="banner">Zone shares sum to ' + l1.sumCheck +
+        ', not 1.0. Halted rather than rounded — this is a bug worth reporting.</div>';
+      $('readout').innerHTML = ''; $('eddy').innerHTML = '';
+      return;
+    }
+
+    const okFiles = state.imports.filter(f => f.ok && !f.empty);
+    const rec = l1.vector ? ZS.recurse(cfg, l1, okFiles) : null;
+
+    // readout boxes
+    if (!l1.vector) {
+      $('readout').innerHTML = '<div class="quiet">Add outflow rows to see the breakdown.</div>';
+      $('eddy').innerHTML = '';
+    } else {
+      $('readout').innerHTML = rec.layers.map(layBox).join('');
+      if (rec.eddy) {
+        $('eddy').innerHTML = '<div class="eddyline">eddy <b>' + rec.eddy.num.toFixed(3) +
+          ' / ' + rec.eddy.den.toFixed(3) + '</b> <span class="dim">at depth ' + rec.depth +
+          (cfg.includeClose ? ', close counted' : '') + '</span></div>';
+      } else {
+        $('eddy').innerHTML = '<div class="quiet">Eddy appears once a counterparty zipsum is ' +
+          'imported — one layer has nothing to recirculate through.</div>';
+      }
+    }
+
+    renderImports(rec);
+    renderPeriods(l1);
+    state._l1 = l1; state._rec = rec; state._cfg = cfg;
+  }
+
+  function layBox(L) {
+    const v = L.vector;
+    const cells = ['local', 'close', 'far', 'void'].map(z =>
+      '<div class="cell"><div class="z">' + z + '</div><div class="n ' + z + '">' +
+      v[z].toFixed(3) + '</div></div>').join('');
+    const segs = ['local', 'close', 'far', 'void'].map(z =>
+      '<div class="seg ' + z + '" style="width:' + (v[z] * 100) + '%" title="' + z + ' ' +
+      v[z].toFixed(3) + '"></div>').join('');
+    return '<div class="laybox">' +
+      '<div class="ltitle"><span>L' + L.layer + '</span><span class="flow">' +
+      (L.layer === 1 ? 'your books' : 'flow reaching this layer: ' + L.flow.toFixed(3)) +
+      '</span></div>' +
+      '<div class="bignums">' + cells + '</div>' +
+      '<div class="trackedline">at this layer, ' + L.tracked.toFixed(3) + ' was tracked</div>' +
+      '<div class="bar" role="img" aria-label="zone shares">' + segs + '</div></div>';
+  }
+
+  function describeScope(label, s) {
+    if (!s) return '<div>' + label + ': unresolved</div>';
+    if (s.mode === 'us') return '<div>' + label + ': any US zip</div>';
+    if (s.mode === 'state') return '<div>' + label + ': any ' + s.state + ' zip (USPS prefix ranges)</div>';
+    return '<div>' + label + ': ' + [...s.set].sort().join(' ') + '</div>';
+  }
+
+  // ---------- imports ----------
+  function handleFiles(list) {
+    for (const f of list) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        state.imports = state.imports.filter(x => x.filename !== f.name);
+        state.imports.push(ZS.parseZipsum(reader.result, f.name));
+        render();
+      };
+      reader.readAsText(f);
+    }
+  }
+  function renderImports(rec) {
+    const el = $('importlist');
+    if (!state.imports.length) { el.innerHTML = ''; return; }
+    const items = state.imports.map(f => {
+      if (!f.ok) return '<li class="error">rejected <span class="fn">' + esc(f.filename) +
+        '</span> — ' + esc(f.why) + '</li>';
+      if (f.empty) return '<li class="quiet"><span class="fn">' + esc(f.filename) +
+        '</span> — accepted, but carries no rows; contributes nothing</li>';
+      const m = rec && rec.matches.find(x => x.filename === f.filename);
+      const u = rec && rec.unmatched.find(x => x.filename === f.filename);
+      const drift = Math.abs(f.rateSum - 1) > 0.005
+        ? ' <span class="warn">(rates sum to ' + f.rateSum.toFixed(3) + ', not 1.000)</span>' : '';
+      const legacy = f.legacy ? ' <span class="quiet">(older file — removed header fields ignored)</span>' : '';
+      const myL = state._cfg && state._cfg.local ? state._cfg.local.token : null;
+      const myC = state._cfg && state._cfg.close ? state._cfg.close.token : null;
+      const mismatch = (f.header.localToken && myL && f.header.localToken !== myL) ||
+                       (f.header.closeToken && myC && f.header.closeToken !== myC);
+      const zonewarn = mismatch ? '<div class="warn">different zones — this file was drawn on ' +
+        esc(f.header.localToken + ' / ' + f.header.closeToken) + ', yours is ' +
+        esc(myL + ' / ' + myC) + '. Its rows are still usable because they are raw zips, but ' +
+        'its own published figures are not comparable to yours. Networks should agree on ' +
+        'one partition.</div>' : '';
+      if (m) return '<li>' + esc(m.name) + ' <span class="fn">' + esc(f.filename) + '</span> — ' +
+        (m.share * 100).toFixed(3).replace(/0+$/,'').replace(/\.$/,'') + '% of your outflow' +
+        (m.how === 'chain' ? ', reached through ' + esc(m.via) : ', matched by ' + m.how) +
+        ', feeds L' + m.atLayer + drift + legacy + zonewarn +
+        (m.approx ? '<div class="warn" style="margin-left:0">approximate — more than one path' +
+          ' reaches zip ' + esc(f.header.zip) + ', and a zipsum row names a zip, not a business.' +
+          ' The share above sums every inbound path.</div>' : '') + '</li>';
+      if (u) return '<li class="warn">unresolved <span class="fn">' + esc(f.filename) + '</span> — ' +
+        esc(u.why) + '</li>';
+      return '<li class="fn">' + esc(f.filename) + '</li>';
+    }).join('');
+    el.innerHTML = '<ul class="plain" style="margin-top:8px">' + items +
+      '</ul><div style="margin-top:6px"><button class="small" id="clearimports">Clear imports</button></div>';
+    const cb = $('clearimports');
+    if (cb) cb.addEventListener('click', () => { state.imports = []; render(); });
+  }
+
+  // ---------- export ----------
+  function renderPeriods(l1) {
+    const type = document.querySelector('[name=ptype]:checked').value;
+    const found = new Set();
+    for (const a of l1.audit) if (a.ok && a.row.date) {
+      const p = ZS.periodOf(a.row.date, type); if (p) found.add(p);
+    }
+    const sel = $('period'); const prev = sel.value;
+    sel.innerHTML = [...found].sort().map(p => '<option>' + p + '</option>').join('') ||
+      '<option value="">no dated rows yet</option>';
+    if ([...found].includes(prev)) sel.value = prev;
+  }
+
+  function buildExport() {
+    const l1 = state._l1, rec = state._rec, cfg = state._cfg;
+    if (!l1 || !l1.vector) return { err: 'Nothing to export yet — the ledger is empty.' };
+    const type = document.querySelector('[name=ptype]:checked').value;
+    const pid = $('period').value;
+    if (!pid) return { err: 'Rows need dates before a period file can be written. Undated rows fall to the first day of the period — but there has to be at least one dated row to name the period.' };
+    // rows for this period only; undated rows fall to first day, flagged in audit
+    let firstDay = null;
+    for (const a of l1.audit) if (a.ok && a.row.date && ZS.periodOf(a.row.date, type) === pid)
+      if (!firstDay || a.row.date < firstDay) firstDay = a.row.date;
+    const agg = new Map(); let ptotal = 0;
+    const fell = [];
+    for (const a of l1.audit) {
+      if (!a.ok) continue;
+      let day = a.row.date;
+      if (!day) { day = firstDay; fell.push(a.row.name || a.zip); }
+      else if (ZS.periodOf(day, type) !== pid) continue;
+      const zkey = a.zone === 'void' ? '99999' : a.zip;
+      const k = day + '|' + zkey; const amt = Number(a.row.amount);
+      agg.set(k, (agg.get(k) || 0) + amt); ptotal += amt;
+    }
+    if (!ptotal) return { err: 'No rows land in ' + pid + '.' };
+    const triples = [...agg.entries()].sort().map(([k, amt]) => {
+      const [d, z] = k.split('|'); return [d, amt / ptotal, z];
+    });
+    const header = {
+      name: $('bname').value || 'unnamed', zip: $('bzip').value,
+      periodType: type, periodId: pid,
+      localToken: cfg.local ? cfg.local.token : '?', closeToken: cfg.close ? cfg.close.token : '?',
+      throughput: null
+    };
+    return { text: ZS.serializeZipsum(header, triples), pid, fell };
+  }
+
+  $('export').addEventListener('click', () => {
+    const b = buildExport();
+    if (b.err) { alert(b.err); return; }
+    const blob = new Blob([b.text], { type: 'text/plain' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = (($('bname').value || 'zipsum').toLowerCase().replace(/[^a-z0-9]+/g, '-')) +
+      '_' + b.pid + '.zipsum.txt';
+    a.click(); URL.revokeObjectURL(a.href);
+    if (b.fell.length) alert('Note: ' + b.fell.length + ' undated row(s) were written under the first day of the period.');
+  });
+  $('preview').addEventListener('click', () => {
+    const b = buildExport(); const box = $('previewbox');
+    box.hidden = false; box.textContent = b.err || b.text;
+  });
+
+  // ---------- presets ----------
+  const PRESETS = {
+    diner: {
+      name: 'Main Street Diner', zip: '72901', zlocal: 'zip', zclose: 'county',
+      rows: [
+        ['2026-09-01', 'Employee wages', 4000, '72901'],
+        ['2026-09-01', 'Commercial rent', 1500, '72901'],
+        ['2026-09-02', 'Local produce supplier', 800, '72903'],
+        ['2026-09-03', 'Sysco', 1200, '30328'],
+        ['2026-09-03', 'Entergy Arkansas', 400, '72201'],
+        ['2026-09-04', 'Unknown misc', 300, '']]
+    },
+    grocer: {
+      name: 'Riverside Grocery', zip: '72632', zlocal: 'county', zclose: 'state',
+      note: 'Owned by a chain three states away. The numbers come out strongly local anyway — the instrument reads flows, not ownership, and this example is here to show that a good reading is not a biography.',
+      rows: [
+        ['2026-09-01', 'Employee wages', 6200, '72632'],
+        ['2026-09-01', 'Rent (local landlord)', 2800, '72632'],
+        ['2026-09-02', 'Ozark Family Farm produce', 2600, '72632'],
+        ['2026-09-02', 'Hillcrest Bakery', 900, '72632'],
+        ['2026-09-03', 'Clear Spring Cleaning Co', 500, '72632'],
+        ['2026-09-03', 'Corporate franchise fee', 2400, '30301'],
+        ['2026-09-04', 'POS software', 300, '94107'],
+        ['2026-09-04', 'Entergy Arkansas', 700, '72201'],
+        ['2026-09-05', 'Misc supplies (untracked)', 400, '']]
+    },
+    outfitter: {
+      name: 'Hilltop Outfitters', zip: '72632', zlocal: 'county', zclose: 'state',
+      note: 'Locally owned, and structurally leaky anyway — inventory has to come from somewhere. Category explains the shape; the reading is not a grade.',
+      rows: [
+        ['2026-09-01', 'Employee wages', 2200, '72632'],
+        ['2026-09-01', 'Commercial rent', 1400, '72632'],
+        ['2026-09-02', 'Wholesale inventory (Denver)', 7800, '80216'],
+        ['2026-09-02', 'Online ads', 900, '94043'],
+        ['2026-09-03', 'Shipping', 700, '38118'],
+        ['2026-09-03', 'Insurance', 450, '61710'],
+        ['2026-09-04', 'Card processing', 350, '94107'],
+        ['2026-09-04', 'Entergy Arkansas', 300, '72201'],
+        ['2026-09-05', 'Misc supplies', 250, '99999']]
+    },
+    harvest: {
+      name: 'Harvest Table Restaurant', zip: '72632', zlocal: 'custom', zclose: 'custom',
+      customLocal: '72611 72616 72631 72632 72661',
+      customClose: '72611 72616 72631 72632 72661 72653 72717 72745 72752 72756',
+      note: 'Test case B. Import the four sample counterparty files to see L2 appear, depth go to 2, and the eddy pair arrive.',
+      rows: [
+        ['2026-09-01', 'Employee Wages', 5080.06, '72632'],
+        ['2026-09-01', 'Employee Wages', 1831.61, '72661'],
+        ['2026-09-01', 'Owner Draw / Wages', 1529.14, '72632'],
+        ['2026-09-02', 'Commercial Rent', 2765.02, '72632'],
+        ['2026-09-02', 'Ozark Family Farm', 2698.37, '72632'],
+        ['2026-09-02', 'Hillcrest Bakery', 1439.58, '72632'],
+        ['2026-09-03', 'Clear Spring Cleaning Co', 850.20, '72632'],
+        ['2026-09-03', 'Carroll County Bookkeeping', 448.28, '72616'],
+        ['2026-09-03', 'Carroll County Water', 267.39, '72616'],
+        ['2026-09-04', 'Sysco Corporation', 2865.16, '77077'],
+        ['2026-09-04', 'Insurance (State Farm)', 904.22, '61710'],
+        ['2026-09-04', 'Entergy Arkansas', 573.36, '72201'],
+        ['2026-09-05', 'Square / POS Software', 409.59, '94107'],
+        ['2026-09-05', 'Arkansas Oklahoma Gas', 190.16, '74103']]
+    }
+  };
+  document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => {
+    const p = PRESETS[b.dataset.preset];
+    $('bname').value = p.name; $('bzip').value = p.zip;
+    $('zlocal').value = p.zlocal; $('zclose').value = p.zclose;
+    $('zlocalcustom').value = p.customLocal || ''; $('zclosecustom').value = p.customClose || '';
+    state.rows = p.rows.map(r => ({ date: r[0], name: r[1], amount: r[2], zip: r[3] }));
+    state.imports = [];
+    render();
+    if (p.note) { $('banner').innerHTML = '<div class="note" style="border:1px solid var(--line);padding:8px 10px;margin-bottom:10px">' + esc(p.note) + '</div>' + $('banner').innerHTML; }
+  }));
+
+  // ---------- wiring ----------
+  ['bname', 'bzip', 'zlocal', 'zclose', 'zlocalcustom', 'zclosecustom', 'includeclose']
+    .forEach(id => $(id).addEventListener('change', render));
+  document.querySelectorAll('[name=ptype]').forEach(r => r.addEventListener('change', render));
+  $('addrow').addEventListener('click', () => addRow());
+  const drop = $('drop'), fi = $('fileinput');
+  drop.addEventListener('click', () => fi.click());
+  drop.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') fi.click(); });
+  fi.addEventListener('change', () => { handleFiles(fi.files); fi.value = ''; });
+  ['dragover', 'dragenter'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('drag'); }));
+  ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('drag'); }));
+  drop.addEventListener('drop', e => handleFiles(e.dataTransfer.files));
+
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+  function fmt$(n) { return '$' + (isFinite(n) ? n : 0).toLocaleString('en-US',
+    { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+  // service worker (https only; file:// works without it)
+  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
+
+  addRow(); addRow(); addRow();
+})();
+</script>
+</body>
+</html>
